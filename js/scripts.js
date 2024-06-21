@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const words = [
+        'a valorant coach.',
+        'a strategy expert.',
+        'an aim practitioner.',
+        'experienced in esports.',
+        'a live comp player.',
+        'a radiant player'
+    ];
+
     const typed = new Typed('#typing', {
         strings: words,
         typeSpeed: 70,
@@ -21,6 +30,10 @@ document.addEventListener('DOMContentLoaded', function () {
             imWrapper.style.transform = 'translateX(0)';
         }
     });
+
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+    }, { passive: false });
 
     AOS.init({
         duration: 1000,
