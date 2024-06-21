@@ -141,22 +141,6 @@
             duration: 1000,
             once: true,
         });
-
-        // Copy functionality for Discord buttons
-        document.querySelectorAll('.buy-button').forEach(button => {
-            button.addEventListener('click', function (event) {
-                event.preventDefault();
-                const discordUsername = 'vrqdalol';
-                navigator.clipboard.writeText(discordUsername).then(() => {
-                    const copyMessage = this.nextElementSibling;
-                    copyMessage.classList.add('show');
-                    setTimeout(() => {
-                        copyMessage.classList.remove('show');
-                    }, 2000);
-                });
-            });
-        });
-    });
     </script>
 </body>
 </html>
