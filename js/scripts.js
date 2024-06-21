@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function () {
     const typed = new Typed('#typing', {
         strings: words,
         typeSpeed: 70,
@@ -25,25 +26,14 @@
         duration: 1000,
         once: true,
     });
+
     window.addEventListener('load', function () {
         document.querySelector('.content-area').style.visibility = 'visible';
         document.getElementById('preloader').style.display = 'none';
     });
+
     document.querySelectorAll('.project-showcase, .social').forEach((el) => {
         el.style.visibility = 'visible';
         AOS.refresh();
-    });
-    document.querySelectorAll('.discord-button').forEach(button => {
-        button.addEventListener('click', function (event) {
-            event.preventDefault();
-            const discordUsername = 'vrqdalol';
-            navigator.clipboard.writeText(discordUsername).then(() => {
-                const copyMessage = document.querySelector('.copy-message');
-                copyMessage.classList.add('show');
-                setTimeout(() => {
-                    copyMessage.classList.remove('show');
-                }, 2000);
-            });
-        });
     });
 });
