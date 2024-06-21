@@ -31,10 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    document.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-    }, { passive: false });
-
     AOS.init({
         duration: 1000,
         once: true,
