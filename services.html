@@ -16,10 +16,33 @@
     <meta property="og:image" content="https://i.imgur.com/KAeDggY.png">
     <link rel="icon" type="image/png" href="content/icon.png">
     <link rel="stylesheet" href="styles/servicestyle.css">
+    <style>
+        .copy-message {
+            display: none;
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #d53628;
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            z-index: 10;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .package-box {
+            position: relative;
+        }
+    </style>
 </head>
 <body>
     <div class="content-area">
-        <h1 class="text">Aim Training Packages</h1>
+        <h1 class="text" id="aim">Aim Training Packages</h1>
         <div class="package-container">
             <div class="package-box" data-aos="fade-up">
                 <h2>Starter Package</h2>
@@ -29,7 +52,8 @@
                     <li class="not-included">1-on-1 Coaching</li>
                     <li class="not-included">Personalized Feedback</li>
                 </ul>
-                <a href="https://vrqdaguides.org/" class="buy-button"><i class="fab fa-discord"></i> Contact For Quote</a>
+                <a href="#" class="buy-button"><i class="fab fa-discord"></i> Contact for pricing</a>
+                <span class="copy-message">Copied</span>
             </div>
             <div class="package-box" data-aos="fade-up" data-aos-delay="100">
                 <h2>Standard Package</h2>
@@ -39,7 +63,8 @@
                     <li class="not-included">1-on-1 Coaching</li>
                     <li class="not-included">Personalized Feedback</li>
                 </ul>
-                <a href="https://vrqdaguides.org/" class="buy-button"><i class="fab fa-discord"></i> Contact For Quote</a>
+                <a href="#" class="buy-button"><i class="fab fa-discord"></i> Contact for pricing</a>
+                <span class="copy-message">Copied</span>
             </div>
             <div class="package-box" data-aos="fade-up" data-aos-delay="200">
                 <h2>Premium Package</h2>
@@ -49,7 +74,8 @@
                     <li>1-on-1 Coaching</li>
                     <li>Personalized Feedback</li>
                 </ul>
-                <a href="https://vrqdaguides.org/" class="buy-button"><i class="fab fa-discord"></i> Contact For Quote</a>
+                <a href="#" class="buy-button"><i class="fab fa-discord"></i> Contact for pricing</a>
+                <span class="copy-message">Copied</span>
             </div>
         </div>
     </div>
@@ -57,17 +83,18 @@
     <hr>
 
     <div class="content-area">
-        <h1 class="text">Mechanics Mastery Packages</h1>
+        <h1 class="text" id="mech">Mechanics Mastery Packages</h1>
         <div class="package-container">
             <div class="package-box" data-aos="fade-up">
                 <h2>Starter Package</h2>
                 <ul class="feature-list">
-                    <li> Advanced Movement Drills</li>
+                    <li>Advanced Movement Drills</li>
                     <li class="not-included">Mechanic Improvement Guides</li>
                     <li class="not-included">1-on-1 Coaching</li>
                     <li class="not-included">Personalized Feedback</li>
                 </ul>
-                <a href="https://vrqdaguides.org/" class="buy-button"><i class="fab fa-discord"></i> Contact For Quote</a>
+                <a href="#" class="buy-button"><i class="fab fa-discord"></i> Contact for pricing</a>
+                <span class="copy-message">Copied</span>
             </div>
             <div class="package-box" data-aos="fade-up" data-aos-delay="100">
                 <h2>Standard Package</h2>
@@ -77,7 +104,8 @@
                     <li class="not-included">1-on-1 Coaching</li>
                     <li class="not-included">Personalized Feedback</li>
                 </ul>
-                <a href="https://vrqdaguides.org/" class="buy-button"><i class="fab fa-discord"></i> Contact For Quote</a>
+                <a href="#" class="buy-button"><i class="fab fa-discord"></i> Contact for pricing</a>
+                <span class="copy-message">Copied</span>
             </div>
             <div class="package-box" data-aos="fade-up" data-aos-delay="200">
                 <h2>Premium Package</h2>
@@ -87,7 +115,8 @@
                     <li>1-on-1 Coaching</li>
                     <li>Personalized Feedback</li>
                 </ul>
-                <a href="https://vrqdaguides.org/" class="buy-button"><i class="fab fa-discord"></i> Contact For Quote</a>
+                <a href="#" class="buy-button"><i class="fab fa-discord"></i> Contact for pricing</a>
+                <span class="copy-message">Copied</span>
             </div>
         </div>
     </div>
@@ -95,7 +124,7 @@
     <hr>
 
     <div class="content-area">
-        <h1 class="text">Boosting Packages</h1>
+        <h1 class="text" id="boost">Boosting Packages</h1>
         <div class="package-container">
             <div class="package-box" data-aos="fade-up">
                 <h2>Premium Boosting</h2>
@@ -104,7 +133,8 @@
                     <li>Placement Matches</li>
                     <li>Net Wins</li>
                 </ul>
-                <a href="https://vrqdaguides.org/" class="buy-button"><i class="fab fa-discord"></i> Contact For Quote</a>
+                <a href="#" class="buy-button"><i class="fab fa-discord"></i> Contact for pricing</a>
+                <span class="copy-message">Copied</span>
             </div>
         </div>
     </div>
@@ -118,11 +148,19 @@
             once: true,
         });
 
-        const divider = document.querySelector('.divider');
-        window.addEventListener('scroll', function () {
-            if (window.scrollY > window.innerHeight / 2) {
-                divider.classList.add('visible');
-            }
+        // Copy functionality for Discord buttons
+        document.querySelectorAll('.buy-button').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                const discordUsername = 'vrqdalol';
+                navigator.clipboard.writeText(discordUsername).then(() => {
+                    const copyMessage = this.nextElementSibling;
+                    copyMessage.classList.add('show');
+                    setTimeout(() => {
+                        copyMessage.classList.remove('show');
+                    }, 2000);
+                });
+            });
         });
     });
     </script>
