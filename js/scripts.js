@@ -46,17 +46,3 @@ document.addEventListener('DOMContentLoaded', function () {
         AOS.refresh();
     });
 
-    document.querySelectorAll('.discord-button').forEach(button => {
-        button.addEventListener('click', function (event) {
-            event.preventDefault();
-            const discordUsername = 'vrqdalol';
-            navigator.clipboard.writeText(discordUsername).then(() => {
-                const copyMessage = document.querySelector('.copy-message');
-                copyMessage.classList.add('show');
-                setTimeout(() => {
-                    copyMessage.classList.remove('show');
-                }, 2000);
-            });
-        });
-    });
-});
